@@ -18,7 +18,6 @@ def predict():
             return jsonify({"error": "no file"})
         if not allowed_file(file.filename):
             return jsonify({"error": "file format not supported"})
-        # try:
         image_bytes = file.read()
         tensor = transform_image(image_bytes)
         prediction = get_prediction(tensor)
@@ -28,6 +27,4 @@ def predict():
         }
         return jsonify(data)
 
-        # except:
-        #     return jsonify({"error": "error during prediction"})
     return jsonify({"result": 1})
